@@ -37,14 +37,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 col-sm-3 col-md-2 align-self-center">
-                    <img src="img/img/logo.png" class="img-fluid">
+                    <img src="img/img/logo.png" class="img-fluid" alt="Nucamp Logo">
                 </div>
                 <div class="col">
                     <h1>Nucamp</h1>
                     <h2>a better way to camp</h2>
                 </div>
                 <div class="col-12 col-md-4 col-xl-2 mt-4">
-                    <a href="#reserveForm" class="btn btn-lg btn-teal text-white text-nowrap">Reserve Campsite</a>
+                    <button class="btn btn-lg btn-teal text-white text-nowrap" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Campsite</button>
                 </div>
             </div>        
         </div>
@@ -53,7 +53,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top"> 
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="img/img/logo.png" height="30" width="30" /></a>
+            <a class="navbar-brand" href="#"><img src="img/img/logo.png" height="30" width="30" alt="Nucamp Logo"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nucampNavbar">        
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -120,39 +120,45 @@
                 </div>
         </div>
 
-        <!-- reservation form section -->
-        <div class="row row-content">
-            <div class="col-9 mx-auto">
-                <div class="card">
-                    <h3 class="card-header bg-info text-white">Reserve a Campsite</h3>
-                    <div class="card-body">
-                        <form id="reserveForm">
-                            <div class="row mb-3">
-                                <label for="numCampers" class="col-form-label col-12 col-sm-6">Number of Campers</label>
-                                <div class="col-12 col-sm-6">
-                                    <select id="numCampers" name="numCampers" class="form-control">
-                                        <option>Select...</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
+        <!-- reservation form modal -->
+        <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" id="reserveModalLabel">Reserve a Campsite</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post" id="reserveForm">
+                                <div class="row mb-3">
+                                    <label for="numCampers" class="col-form-label col-12 col-sm-6">Number of Campers</label>
+                                    <div class="col-12 col-sm-6">
+                                        <select id="numCampers" name="numCampers" class="form-control">
+                                            <option>Select...</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="date" class="col-form-label col-12 col-sm-6">Date</label>
-                                <div class="col-12 col-sm-6">
-                                    <input type="date" id="date" name="date" class="form-control" placeholder="Select date">
+                                <div class="row mb-3">
+                                    <label for="date" class="col-form-label col-12 col-sm-6">Date</label>
+                                    <div class="col-12 col-sm-6">
+                                        <input type="date" id="date" name="date" class="form-control" placeholder="Select date">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
